@@ -6,23 +6,25 @@ services:
     image: francescoxx/flask_app:1.0.0
     build: .
     ports:
-      - "5000:5000"
+      - "5000:5000" #local:cont
+    #restart: always
     environment:
       - DB_URL=postgresql://postgres:123@flask_db:5432/Demo
     depends_on:
       - flask_db
+
+    entrypoint: [ "./wait-for.sh", "flask_db:5432", "--", "flask", "run", "--host=0.0.0.0", "--port=5000" ]
+
+
   flask_db:
     container_name: flask_db
     image: postgres:12
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
       - POSTGRES_PASSWORD=123
       - POSTGRES_USER=postgres
       - POSTGRES_DB=Demo
-    volumes:
-      - pgdata:/var/lib/postgresql/data
 
 volumes:
   pgdata: {}
-    
