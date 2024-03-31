@@ -7,6 +7,10 @@ import os
 
 app = Flask(__name__)
 
+@app.route('/')
+def hello_world():
+    return 'This is my first API call!'
+
 try:
   app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URL')
   #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123@flask_db:5432/Demo'

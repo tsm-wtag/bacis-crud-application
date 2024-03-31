@@ -1,0 +1,19 @@
+version: "3.11.8"
+
+services:
+  flask_db:
+    image: postgres:12
+    environment:
+      - POSTGRES_HOST=flask_db
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_USER=postgres
+      - POSTGRES_DATABASE=Demo
+    ports:
+      - "5435:5432"
+    networks:
+      - fastapi-app
+    
+networks: 
+  fastapi-app:
+    name: fastapi-app
+    external: true
