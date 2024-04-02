@@ -11,12 +11,12 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DATABASE=Demo
     ports:
-      - "5435:5432"
+      - "5436:5432"
     networks:
       - fastapi-app
     
 networks: 
   fastapi-app:
     name: fastapi-app
-    external: true
-    #Bridge 
+    #external: true
+    driver: bridge 
