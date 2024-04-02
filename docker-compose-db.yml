@@ -3,13 +3,10 @@ version: "3.11.8"
 services:
   flask_db:
     image: postgres:12
-    volumes: 
-      - ${PWD}/database/data/:/usr/local/pgsql/data
     environment:
-      - POSTGRES_HOST=flask_db
       - POSTGRES_PASSWORD=123
       - POSTGRES_USER=postgres
-      - POSTGRES_DATABASE=Demo
+      - POSTGRES_DB=demo
     ports:
       - "5436:5432"
     networks:

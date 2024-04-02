@@ -9,7 +9,7 @@ services:
       - 5000:5000
     restart: always
     environment:
-       - DB_URL=postgresql://postgres:123@flask_db:5432/Demo
+       - DB_URL=postgresql://postgres:123@flask_db:5432/demo
     networks:
       - fastapi-app
 
